@@ -1,0 +1,87 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<IdentityUser> _signInManager
+@inject Microsoft.AspNetCore.Identity.UserManager<IdentityUser> _userManager
+@{ var user = await _userManager.GetUserAsync(User);
+    var email = user != null ? user.Email : ""; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookReadingEvent</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">BookReading Event</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav">
+                        <partial name="_LoginPartial" />
+                    </ul>
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="CustomerSupport">Customer Support</a>
+                        </li>
+
+
+                        @if (_signInManager.IsSignedIn(User))
+                        {
+            <li class="nav-item">
+                <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="CreateEvent">Create Event</a>
+            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="MyEvents">My Events</a>
+                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="EventsInvitedTo">Events Invited To</a>
+                                            </li> }
+                                                        else if (_signInManager.IsSignedIn(User) && email == "myadmin@bookevents.com")
+                                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="CreateEvent">Create Event</a>
+                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="MyEvents">My Events</a>
+                                                            </li>
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="EventsInvitedTo">Events Invited To</a>
+                                                                            </li>
+                                                                                            <li class="nav-item">
+                                                                                                <a class="nav-link text-white" asp-area="" asp-controller="Event" asp-action="GetEvents">All Events</a>
+                                                                                            </li>}
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer bg-dark text-muted text-center">
+        <div class="container text-light">
+            Copyright &copy; BookReadingEvent - @DateTime.Now.Year
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+

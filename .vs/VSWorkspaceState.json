@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BookReading.Event",
+    "\\Controllers",
+    "\\Data",
+    "\\Models",
+    "\\Repository",
+    "\\Transaction"
+  ],
+  "SelectedNode": "\\Controllers\\CommentController.cs",
+  "PreviewInSolutionExplorer": false
+}

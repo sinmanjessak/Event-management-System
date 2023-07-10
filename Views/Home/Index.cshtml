@@ -1,0 +1,108 @@
+﻿@model IEnumerable<BookReading.Event.Models.EventViewModel>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> _userManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    var user = await _userManager.GetUserAsync(User);
+    var email = user != null ? user.Email : "";
+}
+
+
+
+<div class="container">
+    <div class="text-center">
+        <h2 class="display-4 fw-bold text-info">Welcome To Book Reading Event !!</h2>
+        <h2 class="fw-bold text-danger">All Public Events</h2>
+        <div class="row">
+            <div class="col-md-12 panel panel-default my-4">
+                <div class="panel-heading text-primary mb-4"><h2>Past Events</h2></div>
+                <div class="panel-body">
+                    <table class="table table-bordered border-dark table-striped">
+                        <tr>
+                            <th>
+                                @Html.Label("Book Title")
+                            </th>
+                            <th>
+                                @Html.Label("Date")
+                            </th>
+                            <th>
+                                @Html.Label("Location")
+                            </th>
+                            <th>
+                                @Html.Label("Start Time")
+                            </th>
+                            <th>
+                                @Html.Label("Event Type")
+                            </th>
+                            <th>
+                                @Html.Label("Duration")
+                            </th>
+                        </tr>
+                        @foreach (var _event in Model)
+                        {
+                            if (_event.Date < DateTime.Now && _event.EventType == "Public")
+                            {
+                                <tr>
+                                    <td><a class="fw-bold" asp-controller="Event" asp-action="ViewDetails" asp-route-id="@_event.ID">@_event.Title</a></td>
+                                    <td>@_event.Date.ToString("dd/MM/yyyy")</td>
+                                    <td>@_event.Location</td>
+                                    <td>@_event.StartTime.ToShortTimeString()</td>
+                                    <td>@_event.EventType</td>
+                                    <td>@_event.Duration</td>
+                                </tr>
+                            }
+
+                        }
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12 panel panel-default mb-4">
+                <div class="panel-heading text-primary mb-4"><h2>Future Events</h2></div>
+                <div class="panel-body">
+                    <table class="table table-bordered border-dark table-striped">
+                        <tr>
+                            <th>
+                                @Html.Label("Book Title")
+                            </th>
+                            <th>
+                                @Html.Label("Date")
+                            </th>
+                            <th>
+                                @Html.Label("Location")
+                            </th>
+                            <th>
+                                @Html.Label("Start Time")
+                            </th>
+                            <th>
+                                @Html.Label("Event Type")
+                            </th>
+                            <th>
+                                @Html.Label("Duration")
+                            </th>
+                        </tr>
+                        @foreach (var _event in Model)
+                        {
+                            if (_event.Date > DateTime.Now && _event.EventType=="Public")
+                            {
+                                <tr>
+                                    <td><a class="fw-bold" asp-controller="Event" asp-action="ViewDetails" asp-route-id="@_event.ID">@_event.Title</a></td>
+                                    <td>@_event.Date.ToString("dd/MM/yyyy")</td>
+                                    <td>@_event.Location</td>
+                                    <td>@_event.StartTime.ToShortTimeString()</td>
+                                    <td>@_event.EventType</td>
+                                    <td>@_event.Duration</td>
+                                </tr>
+                            }
+
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model BookReading.Event.Models.EventViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> _userManager
+@{
+    var user = await _userManager.GetUserAsync(User);
+    var email = user != null ? user.Email : "";
+}
+
+<div class="col-md-4">
+    <div class="card bg-light mb-4 shadow-sm" style="width: 18rem;">
+        <div class="card-body">
+            <div class="card-title">
+                <h4><a asp-action="ViewDetails" asp-controller="Event" asp-route-id="@Model.ID">@Model.Title</a> </h4>
+            </div>
+
+            <div>
+                <p class="text-success d-inline">Location :</p>@Model.Location
+            </div>
+            <div>
+                <p class="text-success d-inline">Date :</p> @Model.Date.ToShortDateString()
+            </div>
+            <div>
+                <p class="text-success d-inline">Start Time :</p> @Model.StartTime.ToShortTimeString()
+            </div>
+
+            <p></p>
+            @if (_signInManager.IsSignedIn(User) && email == "myadmin@bookevents.com")
+            {
+                <p></p>
+                <div class="btn-group">
+                    <a asp-action="UpdateEvent" asp-route-id="@Model.ID" asp-controller="Event" class="btn btn-sm btn-outline-primary">Update Details</a>
+                </div>
+                <p></p>}
+
+            else if (_signInManager.IsSignedIn(User) && (User.Identity.Name == Model.Organiser) && Model.Date >= DateTime.Now)
+            {
+                <p></p>
+                <div class="btn-group">
+                    <a asp-action="UpdateEvent" asp-route-id="@Model.ID" asp-controller="Event" class="btn btn-sm btn-outline-primary">Update Details</a>
+                </div>
+                <p></p>
+            }
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-danger">@Model.EventType Event</p>
+                </div>
+                <div class="col-md-6 text-danger">Organised by <b>@Model.Organiser</b></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

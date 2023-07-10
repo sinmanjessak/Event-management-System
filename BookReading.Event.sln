@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookReading.Event", "BookReading.Event.csproj", "{03FA53F0-0B60-467A-BA1A-C02E018F6FC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{710459B5-DB7B-459C-BF56-09BE8452E66E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buisness", "Buisness", "{927D5618-3263-4568-A2C2-6A8B73345A6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CBB3D084-3992-4855-8B61-A88A604B4093}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{DD2E8AFA-E672-43AB-B0B9-27E40FEAEABE}"
+	ProjectSection(SolutionItems) = preProject
+		Data\ApplicationDbContext.cs = Data\ApplicationDbContext.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{D8F4C84D-D15C-42AC-BCE9-325CF776C5B9}"
+	ProjectSection(SolutionItems) = preProject
+		Repository\AccountRepository.cs = Repository\AccountRepository.cs
+		Repository\CommentRepository.cs = Repository\CommentRepository.cs
+		Repository\EventRepository.cs = Repository\EventRepository.cs
+		Repository\IAccountRepository.cs = Repository\IAccountRepository.cs
+		Repository\ICommentRepository.cs = Repository\ICommentRepository.cs
+		Repository\IEventRepository.cs = Repository\IEventRepository.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{6394D9BE-B351-4E27-B57D-ADE9F46150E5}"
+	ProjectSection(SolutionItems) = preProject
+		Models\ApplicationUser.cs = Models\ApplicationUser.cs
+		Models\CommentViewModel.cs = Models\CommentViewModel.cs
+		Models\ErrorViewModel.cs = Models\ErrorViewModel.cs
+		Models\EventViewModel.cs = Models\EventViewModel.cs
+		Models\LoginViewModel.cs = Models\LoginViewModel.cs
+		Models\SignUpViewModel.cs = Models\SignUpViewModel.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface", "Interface", "{4DC48B14-9682-4A17-AF67-F47D6A42F6CC}"
+	ProjectSection(SolutionItems) = preProject
+		Repository\IAccountRepository.cs = Repository\IAccountRepository.cs
+		Repository\ICommentRepository.cs = Repository\ICommentRepository.cs
+		Repository\IEventRepository.cs = Repository\IEventRepository.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{0AA73B98-E755-4EAE-A834-E77D768A76BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transaction", "Transaction", "{8641806C-82A0-4BBB-9622-534994D75051}"
+	ProjectSection(SolutionItems) = preProject
+		Transaction\IUnitOfWork.cs = Transaction\IUnitOfWork.cs
+		Transaction\UnitOfWork.cs = Transaction\UnitOfWork.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03FA53F0-0B60-467A-BA1A-C02E018F6FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03FA53F0-0B60-467A-BA1A-C02E018F6FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03FA53F0-0B60-467A-BA1A-C02E018F6FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03FA53F0-0B60-467A-BA1A-C02E018F6FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03FA53F0-0B60-467A-BA1A-C02E018F6FC4} = {710459B5-DB7B-459C-BF56-09BE8452E66E}
+		{DD2E8AFA-E672-43AB-B0B9-27E40FEAEABE} = {927D5618-3263-4568-A2C2-6A8B73345A6B}
+		{D8F4C84D-D15C-42AC-BCE9-325CF776C5B9} = {927D5618-3263-4568-A2C2-6A8B73345A6B}
+		{6394D9BE-B351-4E27-B57D-ADE9F46150E5} = {927D5618-3263-4568-A2C2-6A8B73345A6B}
+		{4DC48B14-9682-4A17-AF67-F47D6A42F6CC} = {CBB3D084-3992-4855-8B61-A88A604B4093}
+		{8641806C-82A0-4BBB-9622-534994D75051} = {0AA73B98-E755-4EAE-A834-E77D768A76BE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {335DC383-5FB2-4B2B-A223-4786FAA341C0}
+	EndGlobalSection
+EndGlobal

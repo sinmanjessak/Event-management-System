@@ -1,0 +1,43 @@
+﻿@model BookReading.Event.Models.SignUpViewModel
+@{ ViewData["Title"] = "SignUp"; }
+
+
+<h1 class="text-info fw-bold">SignUp</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignUp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group my-2">
+                <label asp-for="UserName" class="control-label fw-bold"></label>
+                <input asp-for="UserName" class="form-control input-sm" placeholder="Username..." />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group my-2">
+                <label asp-for="Email" class="control-label fw-bold"></label>
+                <input asp-for="Email" class="form-control input-sm" placeholder="Email Address..." />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group my-2">
+                <label asp-for="Password" class="control-label fw-bold"></label>
+                <input asp-for="Password" class="form-control input-sm" placeholder="Password..." />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group my-2">
+                <label asp-for="ConfirmPassword" class="control-label fw-bold"></label>
+                <input asp-for="ConfirmPassword" class="form-control input-sm" placeholder="Confirm Password..." />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group my-2">
+                <input type="submit" value="Sign Up" class="btn btn-info btn-block" />
+            </div>
+        </form>
+        <div>
+            <div class="text-dark fw-bold"> Click <a asp-controller="Account" asp-action="Login">here</a> to Login</div>
+        </div>
+
+    </div>
+</div>
